@@ -1,6 +1,5 @@
 package com.terrylinla.rnsketchcanvas;
 
-import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -265,12 +264,12 @@ public class SketchCanvas extends View {
     }
 
     public void save(String format, String folder, String filename, boolean transparent, boolean includeImage, boolean includeText, boolean cropToImageSize) {
-        File f = new File(Context.getCacheDir(), folder);
+        File f = new File(mContext.getCacheDir(), folder);
         boolean success = f.exists() ? true : f.mkdirs();
         if (success) {
             Bitmap bitmap = createImage(format.equals("png") && transparent, includeImage, includeText, cropToImageSize);
 
-            File file = new File(Context.getCacheDir(), folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
+            File file = new File(mContext.getCacheDir(), folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
             try {
                 bitmap.compress(
                     format.equals("png") ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG,
