@@ -11,6 +11,9 @@ import ReactNative, {
   Platform,
   processColor
 } from 'react-native'
+import {
+  ViewPropTypes
+} from 'deprecated-react-native-prop-types'
 
 const RNSketchCanvas = requireNativeComponent('RNSketchCanvas', SketchCanvas, {
   nativeOnly: {
@@ -22,7 +25,7 @@ const SketchCanvasManager = NativeModules.RNSketchCanvasManager || {};
 
 class SketchCanvas extends React.Component {
   static propTypes = {
-    style: PropTypes.string,
+    style: ViewPropTypes.style,
     strokeColor: PropTypes.string,
     strokeWidth: PropTypes.number,
     onPathsChange: PropTypes.func,
